@@ -1,0 +1,52 @@
+<div *ngIf="!activar">
+<form [formGroup]="formulario" (ngSubmit)="validacion()" novalidate>
+    <ul>
+        <li>
+            <label>Nombre Completo</label>
+            <input type="text" formControlName="nombre" placeholder="Nombre completo">
+            <div *ngIf="formulario.controls['nombre'].invalid && (formulario.controls['nombre'].dirty || formulario.controls['nombre'].touched)" class="alert alert-danger">
+                Campo incompleto
+            </div>
+        </li>
+        <li>
+            <label>Numero Telefonico</label>
+            <input type="number" formControlName="numero" placeholder="Numero telefonico">
+            <div *ngIf="formulario.controls['numero'].invalid && (formulario.controls['numero'].dirty || formulario.controls['numero'].touched)" class="alert alert-danger">
+                Campo incompleto
+            </div>
+        </li>
+        <li>
+            <label>Correo Electronico</label>
+            <input type="email" formControlName="correo" placeholder="Correo electronico">
+            <div *ngIf="formulario.controls['correo'].invalid && (formulario.controls['correo'].dirty || formulario.controls['correo'].touched)">
+                <div *ngIf="formulario.controls['correo'].hasError('required') " class="alert alert-danger">
+                    Campo icompleto
+                </div>
+                <div *ngIf="formulario.controls['correo'].hasError('email') " class="alert alert-danger">
+                    Debe ser formato email (aaaa@aaaa.aaa)
+                </div>
+            </div>
+        </li>
+        <li>
+            <label>Dirigido a: </label>
+            <select >
+                <option>Contenido</option>
+                <option>Publicidad</option>
+                <option>Sugerencias</option>
+                <option>Suscripciones Digitales</option>
+            </select>
+        </li>
+        <li>
+            <label>Mensaje: </label>
+            <textarea formControlName="mensaje" cols="30" rows="5"></textarea>
+            <div *ngIf="formulario.controls['mensaje'].invalid && (formulario.controls['mensaje'].dirty || formulario.controls['mensaje'].touched)" class="alert alert-danger">
+                Campo incompleto
+            </div>
+        </li>
+        <button type="submit" [disabled]="!formulario.valid">Enviar</button>
+    </ul>
+</form>
+</div>
+<div *ngIf="activar">
+Sus respuestas han sido enviadas con exito (:
+</div>

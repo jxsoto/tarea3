@@ -1,0 +1,30 @@
+
+<ul>
+    <li *ngFor="let noticia of ListaNoticias">
+        <div *ngIf="noticia.id==1 || noticia.id==2 || noticia.id==3">
+        <img src="../../assets/{{noticia.imagen}}" alt="{{noticia.imagen}}">
+        <h2 [ngClass]="{azul: noticia.idCategoria==6 ,
+            rojoo: noticia.idCategoria==5,
+            rojo: noticia.idCategoria==4,
+            violeta: noticia.idCategoria==3,
+            azulo: noticia.idCategoria==2,
+            verde: noticia.idCategoria==1}">{{noticia.titulo}}</h2>
+        <p>{{noticia.texto}}</p>
+        <button [routerLink]="['/detalleNoticia',noticia.id]" routerLinkActive="router-link-active" 
+        [ngClass]="{bazul: noticia.idCategoria==6 ,
+            brojoo: noticia.idCategoria==5,
+            brojo: noticia.idCategoria==4,
+            bvioleta: noticia.idCategoria==3,
+            bazulo: noticia.idCategoria==2,
+            bverde: noticia.idCategoria==1}" class="blanco">Leer más</button>
+        </div>
+        <div *ngIf="noticia.id==4 || noticia.id==5 || noticia.id==6 || noticia.id==7">
+            <img src="../../assets/{{noticia.imagen}}" alt="{{noticia.imagen}}">
+            <h2>{{noticia.titulo}}</h2>
+            <p>{{noticia.texto}}</p>
+            <button [routerLink]="['/detalleNoticia',noticia.id]" routerLinkActive="router-link-active" class="blaco">Leer más</button>
+        </div>
+        
+    </li>
+</ul>
+
